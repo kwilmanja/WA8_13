@@ -24,7 +24,7 @@ class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Notes"
+        title = "Chats"
         navigationItem.hidesBackButton = true
         
         if let userToken = UserDefaults.standard.object(forKey: "userToken") as? String{
