@@ -25,6 +25,7 @@ extension RegisterViewController{
                 }else{
                     //MARK: there is a error creating the user...
                     print(error)
+                    self.hideActivityIndicator()
                 }
             })
         }
@@ -37,6 +38,7 @@ extension RegisterViewController{
         changeRequest?.commitChanges(completion: {(error) in
             if error == nil{
                 //MARK: the profile update is successful...
+                self.addUserToFirestore()
                 
                 //MARK: hide the progress indicator...
                 self.hideActivityIndicator()
@@ -46,6 +48,7 @@ extension RegisterViewController{
             }else{
                 //MARK: there was an error updating the profile...
                 print("Error occured: \(String(describing: error))")
+                self.hideActivityIndicator()
             }
         })
     }

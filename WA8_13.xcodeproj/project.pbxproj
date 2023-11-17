@@ -25,11 +25,11 @@
 		5AE6F2B92B0461C7001C815F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2B82B0461C7001C815F /* Contact.swift */; };
 		5AE6F2C12B04620B001C815F /* RegisterFirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2BE2B04620B001C815F /* RegisterFirebaseManager.swift */; };
 		5AE6F2C22B04620B001C815F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2BF2B04620B001C815F /* RegisterViewController.swift */; };
-		5AE6F2C32B04620B001C815F /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C02B04620B001C815F /* RegisterProgressIndicatorManager.swift */; };
 		5AE6F2C52B046212001C815F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C42B046212001C815F /* RegisterView.swift */; };
 		5AE6F2C82B04621B001C815F /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C62B04621B001C815F /* ProgressSpinnerViewController.swift */; };
 		5AE6F2C92B04621B001C815F /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C72B04621B001C815F /* ProgressSpinnerDelegate.swift */; };
 		5AE6F2CB2B04625E001C815F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2CA2B04625E001C815F /* Configs.swift */; };
+		DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,11 +68,11 @@
 		5AE6F2B82B0461C7001C815F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		5AE6F2BE2B04620B001C815F /* RegisterFirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterFirebaseManager.swift; sourceTree = "<group>"; };
 		5AE6F2BF2B04620B001C815F /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		5AE6F2C02B04620B001C815F /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		5AE6F2C42B046212001C815F /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		5AE6F2C62B04621B001C815F /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
 		5AE6F2C72B04621B001C815F /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
 		5AE6F2CA2B04625E001C815F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
+		DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +165,8 @@
 		5AE6F2CE2B046549001C815F /* Register Screen */ = {
 			isa = PBXGroup;
 			children = (
+				DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */,
 				5AE6F2BE2B04620B001C815F /* RegisterFirebaseManager.swift */,
-				5AE6F2C02B04620B001C815F /* RegisterProgressIndicatorManager.swift */,
 				5AE6F2BF2B04620B001C815F /* RegisterViewController.swift */,
 				5AE6F2C42B046212001C815F /* RegisterView.swift */,
 			);
@@ -317,7 +317,6 @@
 				5AE6F2B92B0461C7001C815F /* Contact.swift in Sources */,
 				5AE6F2B52B0461B3001C815F /* ContactsTableViewCell.swift in Sources */,
 				5AE6F2C52B046212001C815F /* RegisterView.swift in Sources */,
-				5AE6F2C32B04620B001C815F /* RegisterProgressIndicatorManager.swift in Sources */,
 				5AE6F2C22B04620B001C815F /* RegisterViewController.swift in Sources */,
 				5AE6F2C12B04620B001C815F /* RegisterFirebaseManager.swift in Sources */,
 				5AE6F2C92B04621B001C815F /* ProgressSpinnerDelegate.swift in Sources */,
@@ -325,6 +324,7 @@
 				5AE6F2C82B04621B001C815F /* ProgressSpinnerViewController.swift in Sources */,
 				5AE6F2B12B0461A7001C815F /* RightBarButtonManager.swift in Sources */,
 				5AE6F2CB2B04625E001C815F /* Configs.swift in Sources */,
+				DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */,
 				5AE6F2352B044463001C815F /* AppDelegate.swift in Sources */,
 				5AE6F2AD2B046172001C815F /* ContactsTableViewManager.swift in Sources */,
 				5AE6F2372B044463001C815F /* SceneDelegate.swift in Sources */,

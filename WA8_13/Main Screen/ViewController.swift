@@ -34,8 +34,8 @@ class ViewController: UIViewController {
                 //MARK: not signed in...
                 self.currentUser = nil
                 self.mainScreen.labelText.text = "Please sign in to see the notes!"
-                self.mainScreen.floatingButtonAddContact.isEnabled = false
-                self.mainScreen.floatingButtonAddContact.isHidden = true
+                self.mainScreen.floatingButtonAddChat.isEnabled = false
+                self.mainScreen.floatingButtonAddChat.isHidden = true
                 
                 //MARK: Reset tableView...
                 self.contactsList.removeAll()
@@ -48,8 +48,8 @@ class ViewController: UIViewController {
                 //MARK: the user is signed in...
                 self.currentUser = user
                 self.mainScreen.labelText.text = "Welcome \(user?.displayName ?? "Anonymous")!"
-                self.mainScreen.floatingButtonAddContact.isEnabled = true
-                self.mainScreen.floatingButtonAddContact.isHidden = false
+                self.mainScreen.floatingButtonAddChat.isEnabled = true
+                self.mainScreen.floatingButtonAddChat.isHidden = false
                 
                 //MARK: Logout bar button...
                 self.setupRightBarButton(isLoggedin: true)
@@ -94,10 +94,10 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         //MARK: Put the floating button above all the views...
-        view.bringSubviewToFront(mainScreen.floatingButtonAddContact)
+        view.bringSubviewToFront(mainScreen.floatingButtonAddChat)
         
         //MARK: tapping the floating add contact button...
-        mainScreen.floatingButtonAddContact.addTarget(self, action: #selector(addContactButtonTapped), for: .touchUpInside)
+        mainScreen.floatingButtonAddChat.addTarget(self, action: #selector(addContactButtonTapped), for: .touchUpInside)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
