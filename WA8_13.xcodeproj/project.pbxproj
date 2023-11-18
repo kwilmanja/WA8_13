@@ -30,6 +30,10 @@
 		5AE6F2C92B04621B001C815F /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C72B04621B001C815F /* ProgressSpinnerDelegate.swift */; };
 		5AE6F2CB2B04625E001C815F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2CA2B04625E001C815F /* Configs.swift */; };
 		DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */; };
+		DF4AFD562B0886C500E51405 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD552B0886C500E51405 /* AddChatViewController.swift */; };
+		DF4AFD592B0886E100E51405 /* AddChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD582B0886E100E51405 /* AddChatView.swift */; };
+		DF4AFD5B2B08876C00E51405 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD5A2B08876C00E51405 /* UserTableViewCell.swift */; };
+		DF4AFD5D2B0891DA00E51405 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD5C2B0891DA00E51405 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		5AE6F2C72B04621B001C815F /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
 		5AE6F2CA2B04625E001C815F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
+		DF4AFD552B0886C500E51405 /* AddChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
+		DF4AFD582B0886E100E51405 /* AddChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatView.swift; sourceTree = "<group>"; };
+		DF4AFD5A2B08876C00E51405 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		DF4AFD5C2B0891DA00E51405 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +139,8 @@
 				5AE6F2CC2B04650A001C815F /* Main Screen */,
 				5AE6F2B82B0461C7001C815F /* Contact.swift */,
 				5AE6F2CE2B046549001C815F /* Register Screen */,
+				DF4AFD572B0886CB00E51405 /* Add Chat */,
+				DF4AFD5E2B0891DE00E51405 /* Data models */,
 				5AE6F2CD2B046539001C815F /* Progress Spinner */,
 				5AE6F2CA2B04625E001C815F /* Configs.swift */,
 				5AE6F23D2B044467001C815F /* Assets.xcassets */,
@@ -171,6 +181,24 @@
 				5AE6F2C42B046212001C815F /* RegisterView.swift */,
 			);
 			path = "Register Screen";
+			sourceTree = "<group>";
+		};
+		DF4AFD572B0886CB00E51405 /* Add Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DF4AFD552B0886C500E51405 /* AddChatViewController.swift */,
+				DF4AFD582B0886E100E51405 /* AddChatView.swift */,
+				DF4AFD5A2B08876C00E51405 /* UserTableViewCell.swift */,
+			);
+			path = "Add Chat";
+			sourceTree = "<group>";
+		};
+		DF4AFD5E2B0891DE00E51405 /* Data models */ = {
+			isa = PBXGroup;
+			children = (
+				DF4AFD5C2B0891DA00E51405 /* User.swift */,
+			);
+			path = "Data models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,11 +352,15 @@
 				5AE6F2C82B04621B001C815F /* ProgressSpinnerViewController.swift in Sources */,
 				5AE6F2B12B0461A7001C815F /* RightBarButtonManager.swift in Sources */,
 				5AE6F2CB2B04625E001C815F /* Configs.swift in Sources */,
+				DF4AFD5B2B08876C00E51405 /* UserTableViewCell.swift in Sources */,
+				DF4AFD592B0886E100E51405 /* AddChatView.swift in Sources */,
 				DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */,
 				5AE6F2352B044463001C815F /* AppDelegate.swift in Sources */,
 				5AE6F2AD2B046172001C815F /* ContactsTableViewManager.swift in Sources */,
 				5AE6F2372B044463001C815F /* SceneDelegate.swift in Sources */,
+				DF4AFD562B0886C500E51405 /* AddChatViewController.swift in Sources */,
 				5AE6F2B72B0461BA001C815F /* MainScreenView.swift in Sources */,
+				DF4AFD5D2B0891DA00E51405 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

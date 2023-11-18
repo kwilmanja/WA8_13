@@ -15,6 +15,8 @@ class RegisterViewController: UIViewController {
     
     let childProgressView = ProgressSpinnerViewController()
     
+    let database = Firestore.firestore()
+    
     override func loadView() {
         view = registerView
     }

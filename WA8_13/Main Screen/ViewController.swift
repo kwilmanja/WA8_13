@@ -13,7 +13,8 @@ class ViewController: UIViewController {
 
     let mainScreen = MainScreenView()
     
-    var contactsList = [Contact]()
+    // TODO change to current chats
+//    var contactsList = [Contact]()
     
     var handleAuth: AuthStateDidChangeListenerHandle?
     
@@ -38,8 +39,8 @@ class ViewController: UIViewController {
                 self.mainScreen.floatingButtonAddChat.isHidden = true
                 
                 //MARK: Reset tableView...
-                self.contactsList.removeAll()
-                self.mainScreen.tableViewContacts.reloadData()
+//                self.contactsList.removeAll()
+//                self.mainScreen.tableViewContacts.reloadData()
                 
                 //MARK: Sign in bar button...
                 self.setupRightBarButton(isLoggedin: false)
@@ -60,17 +61,17 @@ class ViewController: UIViewController {
                     .collection("contacts")
                     .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
                         if let documents = querySnapshot?.documents{
-                            self.contactsList.removeAll()
+//                            self.contactsList.removeAll()
                             for document in documents{
                                 do{
                                     let contact  = try document.data(as: Contact.self)
-                                    self.contactsList.append(contact)
+//                                    self.contactsList.append(contact)
                                 }catch{
                                     print(error)
                                 }
                             }
-                            self.contactsList.sort(by: {$0.name < $1.name})
-                            self.mainScreen.tableViewContacts.reloadData()
+//                            self.contactsList.sort(by: {$0.name < $1.name})
+//                            self.mainScreen.tableViewContacts.reloadData()
                         }
                     })
                 
@@ -83,12 +84,12 @@ class ViewController: UIViewController {
         
         title = "Chats"
         
-        //MARK: patching table view delegate and data source...
-        mainScreen.tableViewContacts.delegate = self
-        mainScreen.tableViewContacts.dataSource = self
-        
-        //MARK: removing the separator line...
-        mainScreen.tableViewContacts.separatorStyle = .none
+//        //MARK: patching table view delegate and data source...
+//        mainScreen.tableViewContacts.delegate = self
+//        mainScreen.tableViewContacts.dataSource = self
+//        
+//        //MARK: removing the separator line...
+//        mainScreen.tableViewContacts.separatorStyle = .none
         
         //MARK: Make the titles look large...
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -97,7 +98,7 @@ class ViewController: UIViewController {
         view.bringSubviewToFront(mainScreen.floatingButtonAddChat)
         
         //MARK: tapping the floating add contact button...
-        mainScreen.floatingButtonAddChat.addTarget(self, action: #selector(addContactButtonTapped), for: .touchUpInside)
+        mainScreen.floatingButtonAddChat.addTarget(self, action: #selector(addChat), for: .touchUpInside)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,10 +110,10 @@ class ViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password)
     }
     
-    @objc func addContactButtonTapped(){
-//        let addContactController = AddContactViewController()
-//        addContactController.currentUser = self.currentUser
-//        navigationController?.pushViewController(addContactController, animated: true)
+    @objc func addChat(){
+        let addChatController = AddChatViewController()
+        addChatController.currentUser = self.currentUser
+        navigationController?.pushViewController(addChatController, animated: true)
     }
 }
 
