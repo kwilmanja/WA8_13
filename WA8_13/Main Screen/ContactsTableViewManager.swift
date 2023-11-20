@@ -21,7 +21,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(self.contactsList[indexPath.row].id!) -> \(self.contactsList[indexPath.row].chatId)")
+//        print("\(self.contactsList[indexPath.row].id!) -> \(self.contactsList[indexPath.row].chatId ?? "no chat ID")")
         let contact = self.contactsList[indexPath.row]
         let chatViewController = ChatViewController()
         chatViewController.contact = contact

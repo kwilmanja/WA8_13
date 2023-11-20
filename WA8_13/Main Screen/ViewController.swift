@@ -56,7 +56,6 @@ class ViewController: UIViewController {
                 
                 //MARK: Observe Firestore database to display the contacts list...
                 
-                print("hello world")
                 self.database.collection("users")
                     .document((self.currentUser?.email)!)
                     .collection("userChats")

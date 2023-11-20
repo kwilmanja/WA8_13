@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import CryptoKit
 
 class ChatViewController: UIViewController {
 
@@ -27,26 +28,32 @@ class ChatViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        attachHandler()
         
-        self.database.collection("chats")
-            .document((contact.chatId))
-            .collection("messages")
-            .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
-                if let documents = querySnapshot?.documents{
-                    self.messages.removeAll()
-                    for document in documents{
-                        do{
-                            let contact  = try document.data(as: Message.self)
-                            self.messages.append(contact)
-                            print(contact.text)
-                        }catch{
-                            print(error)
+    }
+    
+    func attachHandler(){
+        if let chatId = contact.chatId{
+            self.database.collection("chats")
+                .document(chatId)
+                .collection("messages")
+                .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
+                    if let documents = querySnapshot?.documents{
+                        self.messages.removeAll()
+                        for document in documents{
+                            do{
+                                let contact  = try document.data(as: Message.self)
+                                self.messages.append(contact)
+                                print(contact.text)
+                            }catch{
+                                print(error)
+                            }
                         }
+                        //self.messages.sort(by: {$0.id! < $1.id!})
+                        self.chatScreen.tableViewContacts.reloadData()
                     }
-                    //self.messages.sort(by: {$0.id! < $1.id!})
-                    self.chatScreen.tableViewContacts.reloadData()
-                }
-            })
+                })
+        }
     }
     
     override func viewDidLoad() {
@@ -70,32 +77,90 @@ class ChatViewController: UIViewController {
            msgStr.count != 0{
             
             let message = Message(sender: (self.currentUser?.email)!, text: msgStr)
-            sendMessage(message: message)
             
+            if contact.chatId == nil{
+                sendThenLinkToUsers(message: message)
+            } else{
+                sendMessage(message: message)
+            }
+                    
             self.chatScreen.textFieldAddText.text = ""
-
-
         }
         else{
             print("Message line empty")
         }
     }
     
-    func sendMessage(message: Message){
+    
+    func sendThenLinkToUsers(message: Message){
+        
+        print("creating chat")
+        
+        let emails = [currentUser.email!, contact.id!]
+        let chatId = generateUUID(emails: emails)
+        self.contact = UserChat(id: self.contact.id!, chatId: chatId)
+        
+        
+        if(self.sendMessage(message: message)){
+            print("Success I think")
+            
+            let myContact = UserChat(id: self.currentUser.email!, chatId: chatId)
+            do {
+              try database.collection("users")
+                    .document(self.contact.id!)
+                    .collection("userChats")
+                    .document(myContact.id!)
+                    .setData(from: myContact)
+            } catch let error {
+              print("Error writing city to Firestore: \(error)")
+            }
+            
+            
+            
+            do {
+              try database.collection("users")
+                    .document((self.currentUser?.email)!)
+                    .collection("userChats")
+                    .document(self.contact.id!)
+                    .setData(from: self.contact)
+            } catch let error {
+              print("Error writing city to Firestore: \(error)")
+            }
+            
+            attachHandler()
+            
+        }
+        
+        
+        
+        
+    }
+    
+    func generateUUID(emails: [String]) -> String{
+        let sortedEmails = emails.sorted()
+        let joinedEmails = sortedEmails.joined()
+        let joinedEmailsData = Data(joinedEmails.utf8)
+        let hashed = Insecure.MD5.hash(data: joinedEmailsData)
+        return hashed.compactMap{String(format: "%02x", $0)}.joined()
+        
+    }
+    
+    
+    
+    func sendMessage(message: Message) -> Bool{
         
         print("sending \(message.text)")
         
         do {
             try database.collection("chats")
-                .document((contact.chatId))
+                .document((contact.chatId!))
                 .collection("messages")
                 .document().setData(from: message)
+            return true
         } catch let error {
             print("Error sending text: \(error)")
         }
-        
-        
-        
+        return false
         
     }
 

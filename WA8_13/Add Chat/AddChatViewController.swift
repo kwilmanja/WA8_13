@@ -92,7 +92,7 @@ extension AddChatViewController: UITableViewDelegate, UITableViewDataSource{
           case .failure(let error):
               print("No UserChat Found: \(error)")
               let chatViewController = ChatViewController()
-//              chatViewController.contact = UserChat(
+              chatViewController.contact = UserChat(id: userId)
               chatViewController.currentUser = self.currentUser
 //              self.navigationController?.popViewController(animated: false)
               self.navigationController?.pushViewController(chatViewController, animated: true)
