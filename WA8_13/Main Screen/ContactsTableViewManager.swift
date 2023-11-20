@@ -18,4 +18,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         cell.labelName.text = contactsList[indexPath.row].id
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(self.contactsList[indexPath.row].id!) -> \(self.contactsList[indexPath.row].chatId)")
+        let contact = self.contactsList[indexPath.row]
+        let chatViewController = ChatViewController()
+        chatViewController.contact = contact
+        navigationController?.pushViewController(chatViewController, animated: true)
+        
+    }
+    
 }

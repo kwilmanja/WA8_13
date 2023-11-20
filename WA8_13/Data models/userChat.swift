@@ -8,17 +8,6 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-//struct UserChat: Codable{
-//    var name: String?
-//    var chatId: String
-//
-//
-//    init(name: String, chatId: String) {
-//        self.name = name
-//        self.chatId = chatId
-//    }
-//}
-
 struct UserChat: Codable{
     @DocumentID var id: String?
     var chatId: String
