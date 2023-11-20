@@ -49,8 +49,8 @@ class ChatViewController: UIViewController {
                                 print(error)
                             }
                         }
-                        //self.messages.sort(by: {$0.id! < $1.id!})
-                        self.chatScreen.tableViewContacts.reloadData()
+                        self.messages.sort(by: { $0.time.seconds < $1.time.seconds})
+                        self.chatScreen.tableViewChats.reloadData()
                     }
                 })
         }
@@ -62,13 +62,15 @@ class ChatViewController: UIViewController {
         title = contact.id
         
         //MARK: patching table view delegate and data source...
-        chatScreen.tableViewContacts.delegate = self
-        chatScreen.tableViewContacts.dataSource = self
+        chatScreen.tableViewChats.delegate = self
+        chatScreen.tableViewChats.dataSource = self
         
         //MARK: removing the separator line...
-        chatScreen.tableViewContacts.separatorStyle = .none
+        chatScreen.tableViewChats.separatorStyle = .none
         
         chatScreen.buttonSend.addTarget(self, action: #selector(onButtonSendTapped), for: .touchUpInside)
+        
+        scrollToBottom()
     }
     
     @objc func onButtonSendTapped(){
@@ -162,6 +164,16 @@ class ChatViewController: UIViewController {
         }
         return false
         
+    }
+    
+    
+    func scrollToBottom() {
+        let numberOfSections = chatScreen.tableViewChats.numberOfSections
+        let numberOfRows = chatScreen.tableViewChats.numberOfRows(inSection: numberOfSections - 1)
+        if numberOfRows > 0 {
+            let indexPath = IndexPath(row: numberOfRows - 1,section: numberOfSections - 1)
+            chatScreen.tableViewChats.scrollToRow(at: indexPath,at: .bottom, animated: true)
+        }
     }
 
 }

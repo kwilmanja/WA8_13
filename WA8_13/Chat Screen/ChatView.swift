@@ -9,7 +9,7 @@ import UIKit
 
 class ChatView: UIView {
 
-    var tableViewContacts: UITableView!
+    var tableViewChats: UITableView!
     
     var bottomAddView:UIView!
     var textFieldAddText:UITextField!
@@ -20,7 +20,7 @@ class ChatView: UIView {
         super.init(frame: frame)
         self.backgroundColor = .white
 
-        setupTableViewContacts()
+        setupTableViewChats()
         
         setupBottomAddView()
         setupTextFieldAddText()
@@ -30,11 +30,11 @@ class ChatView: UIView {
     }
     
     
-    func setupTableViewContacts(){
-        tableViewContacts = UITableView()
-        tableViewContacts.register(ContactsTableViewCell.self, forCellReuseIdentifier: Configs.tableViewContactsID)
-        tableViewContacts.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(tableViewContacts)
+    func setupTableViewChats(){
+        tableViewChats = UITableView()
+        tableViewChats.register(ChatTableViewCell.self, forCellReuseIdentifier: Configs.tableViewContactsID)
+        tableViewChats.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(tableViewChats)
     }
     
     //MARK: the bottom add contact view....
@@ -85,10 +85,10 @@ class ChatView: UIView {
             
             bottomAddView.topAnchor.constraint(equalTo: textFieldAddText.topAnchor, constant: -8),
 
-            tableViewContacts.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
-            tableViewContacts.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-            tableViewContacts.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            tableViewContacts.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            tableViewChats.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
+            tableViewChats.bottomAnchor.constraint(equalTo: bottomAddView.topAnchor, constant: -8),
+            tableViewChats.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            tableViewChats.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
     }
     

@@ -14,8 +14,38 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewContactsID, for: indexPath) as! ContactsTableViewCell
-        cell.labelName.text = messages[indexPath.row].text
+        let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewContactsID, for: indexPath) as! ChatTableViewCell
+        let m = messages[indexPath.row]
+        
+        cell.selectionStyle = .none
+        cell.isUserInteractionEnabled = false
+        
+        cell.labelText.text = m.text
+        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "y/MM/dd h:mm a"
+//        dateFormatter.amSymbol = "AM"
+//        dateFormatter.pmSymbol = "PM"
+//        let formattedDate = dateFormatter.string(from: m.time.dateValue())
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "y/MM/dd"
+        let formattedDate = dateFormatter.string(from: m.time.dateValue())
+        
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let formattedTime = dateFormatter.string(from: m.time.dateValue())
+
+        cell.labelSender.text = "-\(m.sender) at \(formattedTime) on \(formattedDate)"
+        
+        if(m.sender == currentUser.email){
+            cell.backgroundColor = UIColor.blue
+        } else{
+            cell.backgroundColor = UIColor.red
+        }
+        
         return cell
     }
     

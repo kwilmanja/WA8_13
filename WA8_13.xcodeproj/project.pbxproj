@@ -34,6 +34,7 @@
 		5AE6F2D62B0AF293001C815F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2D52B0AF293001C815F /* ChatViewController.swift */; };
 		5AE6F2D92B0AF55D001C815F /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2D82B0AF55D001C815F /* Messages.swift */; };
 		5AE6F2DB2B0AF6C4001C815F /* ChatTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2DA2B0AF6C4001C815F /* ChatTableViewManager.swift */; };
+		5AE6F3222B0BFB82001C815F /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F3212B0BFB81001C815F /* ChatTableViewCell.swift */; };
 		DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */; };
 		DF4AFD562B0886C500E51405 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD552B0886C500E51405 /* AddChatViewController.swift */; };
 		DF4AFD592B0886E100E51405 /* AddChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD582B0886E100E51405 /* AddChatView.swift */; };
@@ -86,6 +87,7 @@
 		5AE6F2D52B0AF293001C815F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5AE6F2D82B0AF55D001C815F /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		5AE6F2DA2B0AF6C4001C815F /* ChatTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewManager.swift; sourceTree = "<group>"; };
+		5AE6F3212B0BFB81001C815F /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		DF4AFD552B0886C500E51405 /* AddChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
 		DF4AFD582B0886E100E51405 /* AddChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatView.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				5AE6F2D32B0AF280001C815F /* ChatView.swift */,
 				5AE6F2D52B0AF293001C815F /* ChatViewController.swift */,
 				5AE6F2DA2B0AF6C4001C815F /* ChatTableViewManager.swift */,
+				5AE6F3212B0BFB81001C815F /* ChatTableViewCell.swift */,
 			);
 			path = "Chat Screen";
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				5AE6F2C52B046212001C815F /* RegisterView.swift in Sources */,
 				5AE6F2C22B04620B001C815F /* RegisterViewController.swift in Sources */,
 				5AE6F2D42B0AF280001C815F /* ChatView.swift in Sources */,
+				5AE6F3222B0BFB82001C815F /* ChatTableViewCell.swift in Sources */,
 				5AE6F2D22B0AEC7D001C815F /* userChat.swift in Sources */,
 				5AE6F2C12B04620B001C815F /* RegisterFirebaseManager.swift in Sources */,
 				5AE6F2C92B04621B001C815F /* ProgressSpinnerDelegate.swift in Sources */,
