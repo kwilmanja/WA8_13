@@ -25,8 +25,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let contact = self.contactsList[indexPath.row]
         let chatViewController = ChatViewController()
         chatViewController.contact = contact
+        chatViewController.currentUser = self.currentUser
         navigationController?.pushViewController(chatViewController, animated: true)
-        
     }
     
 }

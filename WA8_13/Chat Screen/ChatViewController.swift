@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseFirestore
 
 class ChatViewController: UIViewController {
@@ -13,6 +14,7 @@ class ChatViewController: UIViewController {
     let chatScreen = ChatView()
         
     var contact: UserChat!
+    var currentUser: FirebaseAuth.User!
             
     let database = Firestore.firestore()
     
@@ -41,7 +43,7 @@ class ChatViewController: UIViewController {
                             print(error)
                         }
                     }
-                    self.messages.sort(by: {$0.id! < $1.id!})
+                    //self.messages.sort(by: {$0.id! < $1.id!})
                     self.chatScreen.tableViewContacts.reloadData()
                 }
             })
@@ -59,8 +61,41 @@ class ChatViewController: UIViewController {
         //MARK: removing the separator line...
         chatScreen.tableViewContacts.separatorStyle = .none
         
-        //MARK: Make the titles look large...
-        navigationController?.navigationBar.prefersLargeTitles = true
+        chatScreen.buttonSend.addTarget(self, action: #selector(onButtonSendTapped), for: .touchUpInside)
+    }
+    
+    @objc func onButtonSendTapped(){
+        //do the validations...
+        if let msgStr = chatScreen.textFieldAddText.text,
+           msgStr.count != 0{
+            
+            let message = Message(sender: (self.currentUser?.email)!, text: msgStr)
+            sendMessage(message: message)
+            
+            self.chatScreen.textFieldAddText.text = ""
+
+
+        }
+        else{
+            print("Message line empty")
+        }
+    }
+    
+    func sendMessage(message: Message){
+        
+        print("sending \(message.text)")
+        
+        do {
+            try database.collection("chats")
+                .document((contact.chatId))
+                .collection("messages")
+                .document().setData(from: message)
+        } catch let error {
+            print("Error sending text: \(error)")
+        }
+        
+        
+        
         
     }
 

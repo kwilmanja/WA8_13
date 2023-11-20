@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 class AddChatViewController: UIViewController {
     
-    var currentUser:FirebaseAuth.User?
+    var currentUser:FirebaseAuth.User!
     
     let addChatScreen = AddChatView()
     
@@ -70,4 +70,42 @@ extension AddChatViewController: UITableViewDelegate, UITableViewDataSource{
         cell.name.text = usersList[indexPath.row].name
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let userId = self.usersList[indexPath.row].id!
+        
+        let docRef = self.database.collection("users")
+            .document((self.currentUser.email)!)
+            .collection("userChats").document(userId)
+
+        docRef.getDocument(as: UserChat.self) { result in
+          switch result {
+          case .success(let userChat):
+              print("UserChat Found for: \(userChat)")
+              let chatViewController = ChatViewController()
+              chatViewController.contact = userChat
+              chatViewController.currentUser = self.currentUser
+//              self.navigationController?.popViewController(animated: false)
+              self.navigationController?.pushViewController(chatViewController, animated: true)
+              
+          case .failure(let error):
+              print("No UserChat Found: \(error)")
+              let chatViewController = ChatViewController()
+//              chatViewController.contact = UserChat(
+              chatViewController.currentUser = self.currentUser
+//              self.navigationController?.popViewController(animated: false)
+              self.navigationController?.pushViewController(chatViewController, animated: true)
+          }
+        }
+        
+
+//        let contact = self.contactsList[indexPath.row]
+//        let chatViewController = ChatViewController()
+//        chatViewController.contact = contact
+//        chatViewController.currentUser = self.currentUser
+//        navigationController?.pushViewController(chatViewController, animated: true)
+    }
+    
+    
 }
