@@ -51,6 +51,7 @@ class ChatViewController: UIViewController {
                         }
                         self.messages.sort(by: { $0.time.seconds < $1.time.seconds})
                         self.chatScreen.tableViewChats.reloadData()
+                        self.scrollToBottom()
                     }
                 })
         }
@@ -70,7 +71,6 @@ class ChatViewController: UIViewController {
         
         chatScreen.buttonSend.addTarget(self, action: #selector(onButtonSendTapped), for: .touchUpInside)
         
-        scrollToBottom()
     }
     
     @objc func onButtonSendTapped(){

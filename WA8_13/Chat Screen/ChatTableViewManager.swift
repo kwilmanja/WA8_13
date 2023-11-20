@@ -34,7 +34,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
 
         cell.labelSender.text = "-\(m.sender) at \(formattedTime) on \(formattedDate)"
         
-        if(m.sender == currentUser.email){
+        if(m.sender == currentUser.displayName){
             cell.backgroundColor = UIColor.blue
         } else{
             cell.backgroundColor = UIColor.red
