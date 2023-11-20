@@ -14,8 +14,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewContactsID, for: indexPath) as! ContactsTableViewCell
-        cell.labelName.text = contactsList[indexPath.row].id
+        let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewContactsID, for: indexPath) as! UserTableViewCell
+        cell.name.text = contactsList[indexPath.row].name
+        cell.email.text = contactsList[indexPath.row].id
         return cell
     }
     

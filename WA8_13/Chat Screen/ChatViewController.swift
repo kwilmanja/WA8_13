@@ -59,7 +59,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = contact.id
+        title = contact.name
         
         //MARK: patching table view delegate and data source...
         chatScreen.tableViewChats.delegate = self
@@ -78,7 +78,7 @@ class ChatViewController: UIViewController {
         if let msgStr = chatScreen.textFieldAddText.text,
            msgStr.count != 0{
             
-            let message = Message(sender: (self.currentUser?.email)!, text: msgStr)
+            let message = Message(sender: (self.currentUser?.displayName)!, text: msgStr)
             
             if contact.chatId == nil{
                 sendThenLinkToUsers(message: message)
@@ -100,13 +100,13 @@ class ChatViewController: UIViewController {
         
         let emails = [currentUser.email!, contact.id!]
         let chatId = generateUUID(emails: emails)
-        self.contact = UserChat(id: self.contact.id!, chatId: chatId)
+        self.contact = UserChat(id: self.contact.id!, chatId: chatId, name:self.contact.name)
         
         
         if(self.sendMessage(message: message)){
             print("Success I think")
             
-            let myContact = UserChat(id: self.currentUser.email!, chatId: chatId)
+            let myContact = UserChat(id: self.currentUser.email!, chatId: chatId, name: self.currentUser.displayName!)
             do {
               try database.collection("users")
                     .document(self.contact.id!)

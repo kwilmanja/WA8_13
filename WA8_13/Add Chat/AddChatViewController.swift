@@ -68,16 +68,18 @@ extension AddChatViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewUsersID, for: indexPath) as! UserTableViewCell
         cell.name.text = usersList[indexPath.row].name
+        cell.email.text = usersList[indexPath.row].id
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let userId = self.usersList[indexPath.row].id!
+        let otherUser = self.usersList[indexPath.row]
         
         let docRef = self.database.collection("users")
             .document((self.currentUser.email)!)
-            .collection("userChats").document(userId)
+            .collection("userChats").document(otherUser.id!)
 
         docRef.getDocument(as: UserChat.self) { result in
           switch result {
@@ -92,7 +94,7 @@ extension AddChatViewController: UITableViewDelegate, UITableViewDataSource{
           case .failure(let error):
               print("No UserChat Found: \(error)")
               let chatViewController = ChatViewController()
-              chatViewController.contact = UserChat(id: userId)
+              chatViewController.contact = UserChat(id: otherUser.id!, name: otherUser.name)
               chatViewController.currentUser = self.currentUser
 //              self.navigationController?.popViewController(animated: false)
               self.navigationController?.pushViewController(chatViewController, animated: true)

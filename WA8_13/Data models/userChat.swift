@@ -11,18 +11,21 @@ import FirebaseFirestoreSwift
 struct UserChat: Codable{
     @DocumentID var id: String?
     var chatId: String?
+    var name: String
     
-    init(chatId: String) {
-        self.chatId = chatId
-    }
+//    init(chatId: String) {
+//        self.chatId = chatId
+//    }
     
-    init(id: String, chatId: String) {
+    init(id: String, chatId: String, name: String) {
         self.id = id
         self.chatId = chatId
+        self.name = name
     }
     
-    init(id: String){
+    init(id: String, name: String){
         self.id = id
+        self.name = name
     }
 
     

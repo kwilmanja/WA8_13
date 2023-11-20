@@ -11,12 +11,14 @@ class UserTableViewCell: UITableViewCell {
     
     var wrapperCellView: UIView!
     var name: UILabel!
+    var email: UILabel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupWrapperCellView()
         setupName()
+        setupEmail()
         
         initConstraints()
     }
@@ -42,6 +44,13 @@ class UserTableViewCell: UITableViewCell {
         wrapperCellView.addSubview(name)
     }
     
+    func setupEmail() {
+        email = UILabel()
+        email.font = UIFont.systemFont(ofSize: 15)
+        email.translatesAutoresizingMaskIntoConstraints = false
+        wrapperCellView.addSubview(email)
+    }
+    
     func initConstraints() {
         NSLayoutConstraint.activate([
             wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -54,7 +63,12 @@ class UserTableViewCell: UITableViewCell {
             name.heightAnchor.constraint(equalToConstant: 20),
             name.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
             
-            wrapperCellView.heightAnchor.constraint(equalToConstant: 30)
+            email.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 5),
+            email.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 16),
+            email.heightAnchor.constraint(equalToConstant: 15),
+            email.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
+            
+            wrapperCellView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     

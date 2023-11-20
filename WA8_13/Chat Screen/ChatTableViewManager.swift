@@ -22,12 +22,6 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.labelText.text = m.text
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "y/MM/dd h:mm a"
-//        dateFormatter.amSymbol = "AM"
-//        dateFormatter.pmSymbol = "PM"
-//        let formattedDate = dateFormatter.string(from: m.time.dateValue())
-        
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "y/MM/dd"
