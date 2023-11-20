@@ -12,9 +12,8 @@ import FirebaseFirestore
 class ViewController: UIViewController {
 
     let mainScreen = MainScreenView()
-    
-    // TODO change to current chats
-//    var contactsList = [Contact]()
+        
+    var contactsList = [UserChat]()
     
     var handleAuth: AuthStateDidChangeListenerHandle?
     
@@ -39,8 +38,8 @@ class ViewController: UIViewController {
                 self.mainScreen.floatingButtonAddChat.isHidden = true
                 
                 //MARK: Reset tableView...
-//                self.contactsList.removeAll()
-//                self.mainScreen.tableViewContacts.reloadData()
+                self.contactsList.removeAll()
+                self.mainScreen.tableViewContacts.reloadData()
                 
                 //MARK: Sign in bar button...
                 self.setupRightBarButton(isLoggedin: false)
@@ -56,25 +55,26 @@ class ViewController: UIViewController {
                 self.setupRightBarButton(isLoggedin: true)
                 
                 //MARK: Observe Firestore database to display the contacts list...
+                
+                print("hello world")
                 self.database.collection("users")
                     .document((self.currentUser?.email)!)
-                    .collection("contacts")
+                    .collection("userChats")
                     .addSnapshotListener(includeMetadataChanges: false, listener: {querySnapshot, error in
                         if let documents = querySnapshot?.documents{
-//                            self.contactsList.removeAll()
+                            self.contactsList.removeAll()
                             for document in documents{
                                 do{
-                                    let contact  = try document.data(as: Contact.self)
-//                                    self.contactsList.append(contact)
+                                    let contact  = try document.data(as: UserChat.self)
+                                    self.contactsList.append(contact)
                                 }catch{
                                     print(error)
                                 }
                             }
-//                            self.contactsList.sort(by: {$0.name < $1.name})
-//                            self.mainScreen.tableViewContacts.reloadData()
+                            self.contactsList.sort(by: {$0.id! < $1.id!})
+                            self.mainScreen.tableViewContacts.reloadData()
                         }
                     })
-                
             }
         }
     }
@@ -84,12 +84,12 @@ class ViewController: UIViewController {
         
         title = "Chats"
         
-//        //MARK: patching table view delegate and data source...
-//        mainScreen.tableViewContacts.delegate = self
-//        mainScreen.tableViewContacts.dataSource = self
-//        
-//        //MARK: removing the separator line...
-//        mainScreen.tableViewContacts.separatorStyle = .none
+        //MARK: patching table view delegate and data source...
+        mainScreen.tableViewContacts.delegate = self
+        mainScreen.tableViewContacts.dataSource = self
+        
+        //MARK: removing the separator line...
+        mainScreen.tableViewContacts.separatorStyle = .none
         
         //MARK: Make the titles look large...
         navigationController?.navigationBar.prefersLargeTitles = true

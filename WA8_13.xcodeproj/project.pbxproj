@@ -29,6 +29,7 @@
 		5AE6F2C82B04621B001C815F /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C62B04621B001C815F /* ProgressSpinnerViewController.swift */; };
 		5AE6F2C92B04621B001C815F /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2C72B04621B001C815F /* ProgressSpinnerDelegate.swift */; };
 		5AE6F2CB2B04625E001C815F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2CA2B04625E001C815F /* Configs.swift */; };
+		5AE6F2D22B0AEC7D001C815F /* userChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2D12B0AEC7D001C815F /* userChat.swift */; };
 		DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */; };
 		DF4AFD562B0886C500E51405 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD552B0886C500E51405 /* AddChatViewController.swift */; };
 		DF4AFD592B0886E100E51405 /* AddChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD582B0886E100E51405 /* AddChatView.swift */; };
@@ -76,6 +77,7 @@
 		5AE6F2C62B04621B001C815F /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
 		5AE6F2C72B04621B001C815F /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
 		5AE6F2CA2B04625E001C815F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
+		5AE6F2D12B0AEC7D001C815F /* userChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userChat.swift; sourceTree = "<group>"; };
 		DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		DF4AFD552B0886C500E51405 /* AddChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
 		DF4AFD582B0886E100E51405 /* AddChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				DF4AFD5C2B0891DA00E51405 /* User.swift */,
+				5AE6F2D12B0AEC7D001C815F /* userChat.swift */,
 			);
 			path = "Data models";
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				5AE6F2B52B0461B3001C815F /* ContactsTableViewCell.swift in Sources */,
 				5AE6F2C52B046212001C815F /* RegisterView.swift in Sources */,
 				5AE6F2C22B04620B001C815F /* RegisterViewController.swift in Sources */,
+				5AE6F2D22B0AEC7D001C815F /* userChat.swift in Sources */,
 				5AE6F2C12B04620B001C815F /* RegisterFirebaseManager.swift in Sources */,
 				5AE6F2C92B04621B001C815F /* ProgressSpinnerDelegate.swift in Sources */,
 				5AE6F2AB2B04612C001C815F /* ViewController.swift in Sources */,
