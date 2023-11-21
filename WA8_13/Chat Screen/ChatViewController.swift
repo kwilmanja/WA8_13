@@ -53,17 +53,17 @@ class ChatViewController: UIViewController {
         view.addGestureRecognizer(tapRecognizer)
         
         // move view up and down based on keyboard so you can see typed message
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // remove observers
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        // remove observers
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
     
     // hide keyboard
     @objc func hideKeyboardOnTap(){
@@ -71,30 +71,30 @@ class ChatViewController: UIViewController {
         view.endEditing(true)
     }
 
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
-//            print("Start 0: ", chatScreen.bottomAddView.frame.origin.y)
-//            print(chatScreen.tableViewChats.frame.maxY)
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//            print("Start 1: ", chatScreen.bottomAddView.frame.origin.y)
-//            print(chatScreen.tableViewChats.frame.maxY)
-            
-            keyboardHeight = keyboardSize - chatScreen.safeAreaInsets.bottom
-            chatScreen.bottomAddView.frame.origin.y -= keyboardHeight
-        }
-    }
-
-    @objc func keyboardWillHide(notification: NSNotification) {
-//        print("End 0: ", chatScreen.bottomAddView.frame.origin.y)
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+////            print("Start 0: ", chatScreen.bottomAddView.frame.origin.y)
+////            print(chatScreen.tableViewChats.frame.maxY)
+////            if self.view.frame.origin.y == 0 {
+////                self.view.frame.origin.y -= keyboardSize.height
+////            }
+////            print("Start 1: ", chatScreen.bottomAddView.frame.origin.y)
+////            print(chatScreen.tableViewChats.frame.maxY)
+//            
+//            keyboardHeight = keyboardSize - chatScreen.safeAreaInsets.bottom
+//            chatScreen.bottomAddView.frame.origin.y -= keyboardHeight
 //        }
-//        print("End 1: ", chatScreen.bottomAddView.frame.origin.y)
-        
-        chatScreen.bottomAddView.frame.origin.y += keyboardHeight
-    }
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+////        print("End 0: ", chatScreen.bottomAddView.frame.origin.y)
+////        if self.view.frame.origin.y != 0 {
+////            self.view.frame.origin.y = 0
+////        }
+////        print("End 1: ", chatScreen.bottomAddView.frame.origin.y)
+//        
+//        chatScreen.bottomAddView.frame.origin.y += keyboardHeight
+//    }
     
     func attachHandler(){
         if let chatId = contact.chatId{
