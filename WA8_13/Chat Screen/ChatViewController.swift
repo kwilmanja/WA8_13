@@ -21,7 +21,7 @@ class ChatViewController: UIViewController {
     
     var messages = [Message]()
     
-    var keyboardHeight:CGFloat?
+    var keyboardHeight:CGFloat = 0
     
     override func loadView() {
         view = chatScreen
@@ -81,8 +81,8 @@ class ChatViewController: UIViewController {
 //            print("Start 1: ", chatScreen.bottomAddView.frame.origin.y)
 //            print(chatScreen.tableViewChats.frame.maxY)
             
-            keyboardHeight = keyboardSize
-            chatScreen.bottomAddView.frame.origin.y -= keyboardSize - chatScreen.safeAreaInsets.bottom
+            keyboardHeight = keyboardSize - chatScreen.safeAreaInsets.bottom
+            chatScreen.bottomAddView.frame.origin.y -= keyboardHeight
         }
     }
 
@@ -93,7 +93,7 @@ class ChatViewController: UIViewController {
 //        }
 //        print("End 1: ", chatScreen.bottomAddView.frame.origin.y)
         
-        chatScreen.bottomAddView.frame.origin.y += keyboardHeight! - chatScreen.safeAreaInsets.bottom
+        chatScreen.bottomAddView.frame.origin.y += keyboardHeight
     }
     
     func attachHandler(){

@@ -33,6 +33,7 @@
 		5AE6F2D92B0AF55D001C815F /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2D82B0AF55D001C815F /* Messages.swift */; };
 		5AE6F2DB2B0AF6C4001C815F /* ChatTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F2DA2B0AF6C4001C815F /* ChatTableViewManager.swift */; };
 		5AE6F3222B0BFB82001C815F /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE6F3212B0BFB81001C815F /* ChatTableViewCell.swift */; };
+		DF463BB22B0C516E00E34A99 /* LoginProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF463BB12B0C516E00E34A99 /* LoginProgressIndicatorManager.swift */; };
 		DF4AFD542B08034000E51405 /* RegisterProgressIndicatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */; };
 		DF4AFD562B0886C500E51405 /* AddChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD552B0886C500E51405 /* AddChatViewController.swift */; };
 		DF4AFD592B0886E100E51405 /* AddChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4AFD582B0886E100E51405 /* AddChatView.swift */; };
@@ -65,6 +66,7 @@
 		5AE6F2D82B0AF55D001C815F /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		5AE6F2DA2B0AF6C4001C815F /* ChatTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewManager.swift; sourceTree = "<group>"; };
 		5AE6F3212B0BFB81001C815F /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		DF463BB12B0C516E00E34A99 /* LoginProgressIndicatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		DF4AFD532B08034000E51405 /* RegisterProgressIndicatorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterProgressIndicatorManager.swift; sourceTree = "<group>"; };
 		DF4AFD552B0886C500E51405 /* AddChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatViewController.swift; sourceTree = "<group>"; };
 		DF4AFD582B0886E100E51405 /* AddChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				5AE6F2AC2B046172001C815F /* ContactsTableViewManager.swift */,
 				5AE6F2B02B0461A6001C815F /* RightBarButtonManager.swift */,
 				5AE6F2B62B0461BA001C815F /* MainScreenView.swift */,
+				DF463BB12B0C516E00E34A99 /* LoginProgressIndicatorManager.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				5AE6F2AB2B04612C001C815F /* ViewController.swift in Sources */,
 				5AE6F2C82B04621B001C815F /* ProgressSpinnerViewController.swift in Sources */,
 				5AE6F2B12B0461A7001C815F /* RightBarButtonManager.swift in Sources */,
+				DF463BB22B0C516E00E34A99 /* LoginProgressIndicatorManager.swift in Sources */,
 				5AE6F2CB2B04625E001C815F /* Configs.swift in Sources */,
 				DF4AFD5B2B08876C00E51405 /* UserTableViewCell.swift in Sources */,
 				DF4AFD592B0886E100E51405 /* AddChatView.swift in Sources */,

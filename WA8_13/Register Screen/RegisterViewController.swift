@@ -29,12 +29,24 @@ class RegisterViewController: UIViewController {
     
     @objc func onRegisterTapped(){
         // validate password
-        if (registerView.textFieldPassword.text == registerView.textFieldRepeatPassword.text) {
+        if (registerView.textFieldPassword.text != registerView.textFieldRepeatPassword.text) {
+            showError("Passwords do not match.")
+            return
+        }
+        
+        if isValidEmail(registerView.textFieldEmail.text!) {
             // creating a new user on Firebase...
             registerNewAccount()
         } else {
-            showError("Passwords do not match.")
+            showError("The email is invalid!")
         }
+    }
+    
+    func isValidEmail(_ email:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        return emailPred.evaluate(with: email)
     }
     
     func showError(_ msg: String) {

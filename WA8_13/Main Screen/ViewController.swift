@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     
     let database = Firestore.firestore()
     
+    let childProgressView = ProgressSpinnerViewController()
+    
     override func loadView() {
         view = mainScreen
     }
@@ -105,8 +107,40 @@ class ViewController: UIViewController {
         Auth.auth().removeStateDidChangeListener(handleAuth!)
     }
     
-    func signIn(email: String, password: String){
-        Auth.auth().signIn(withEmail: email, password: password)
+    func signIn(email: String, password: String) {        
+        self.showActivityIndicator()
+        
+        if self.isValidEmail(email) {
+            // sign in via firebase
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (result, error) in
+                if error == nil {
+                    // user authenticated, hide progress bar
+                    self.hideActivityIndicator()
+                } else {
+                    // show login error
+                    self.hideActivityIndicator()
+                    self.showError("No user is found or password is incorrect.")
+                }
+            })
+        } else {
+            self.hideActivityIndicator()
+            self.showError("The email is invalid!")
+        }
+    }
+    
+    func isValidEmail(_ email:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        return emailPred.evaluate(with: email)
+    }
+    
+    func showError(_ msg: String) {
+        let alert = UIAlertController(title: "Error!", message: msg, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        self.present(alert, animated: true)
     }
     
     @objc func addChat(){
