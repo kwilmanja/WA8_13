@@ -25,7 +25,7 @@ extension RegisterViewController{
                     self.setNameOfTheUserInFirebaseAuth(name: name, email: email)
                 }else{
                     //MARK: there is a error creating the user...
-                    print(error)
+                    self.showError(error!.localizedDescription)
                     self.hideActivityIndicator()
                 }
             })
