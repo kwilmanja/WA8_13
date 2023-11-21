@@ -28,7 +28,20 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func onRegisterTapped(){
-        //MARK: creating a new user on Firebase...
-        registerNewAccount()
+        // validate password
+        if (registerView.textFieldPassword.text == registerView.textFieldRepeatPassword.text) {
+            // creating a new user on Firebase...
+            registerNewAccount()
+        } else {
+            showError("Passwords do not match.")
+        }
+    }
+    
+    func showError(_ msg: String) {
+        let alert = UIAlertController(title: "Error!", message: msg, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        self.present(alert, animated: true)
     }
 }
