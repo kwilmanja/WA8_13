@@ -21,6 +21,8 @@ class ChatViewController: UIViewController {
     
     var messages = [Message]()
     
+    var keyboardHeight:CGFloat?
+    
     override func loadView() {
         view = chatScreen
     }
@@ -29,7 +31,69 @@ class ChatViewController: UIViewController {
         super.viewWillAppear(animated)
         
         attachHandler()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        title = contact.name
+        
+        //MARK: patching table view delegate and data source...
+        chatScreen.tableViewChats.delegate = self
+        chatScreen.tableViewChats.dataSource = self
+        
+        //MARK: removing the separator line...
+        chatScreen.tableViewChats.separatorStyle = .none
+        
+        chatScreen.buttonSend.addTarget(self, action: #selector(onButtonSendTapped), for: .touchUpInside)
+        
+        // recognizing the taps on the app screen, not the keyboard
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tapRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapRecognizer)
+        
+        // move view up and down based on keyboard so you can see typed message
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // remove observers
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    // hide keyboard
+    @objc func hideKeyboardOnTap(){
+        //MARK: removing the keyboard from screen...
+        view.endEditing(true)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+//            print("Start 0: ", chatScreen.bottomAddView.frame.origin.y)
+//            print(chatScreen.tableViewChats.frame.maxY)
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//            print("Start 1: ", chatScreen.bottomAddView.frame.origin.y)
+//            print(chatScreen.tableViewChats.frame.maxY)
+            
+            keyboardHeight = keyboardSize
+            chatScreen.bottomAddView.frame.origin.y -= keyboardSize - chatScreen.safeAreaInsets.bottom
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+//        print("End 0: ", chatScreen.bottomAddView.frame.origin.y)
+//        if self.view.frame.origin.y != 0 {
+//            self.view.frame.origin.y = 0
+//        }
+//        print("End 1: ", chatScreen.bottomAddView.frame.origin.y)
+        
+        chatScreen.bottomAddView.frame.origin.y += keyboardHeight! - chatScreen.safeAreaInsets.bottom
     }
     
     func attachHandler(){
@@ -55,22 +119,6 @@ class ChatViewController: UIViewController {
                     }
                 })
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        title = contact.name
-        
-        //MARK: patching table view delegate and data source...
-        chatScreen.tableViewChats.delegate = self
-        chatScreen.tableViewChats.dataSource = self
-        
-        //MARK: removing the separator line...
-        chatScreen.tableViewChats.separatorStyle = .none
-        
-        chatScreen.buttonSend.addTarget(self, action: #selector(onButtonSendTapped), for: .touchUpInside)
-        
     }
     
     @objc func onButtonSendTapped(){
@@ -132,10 +180,6 @@ class ChatViewController: UIViewController {
             attachHandler()
             
         }
-        
-        
-        
-        
     }
     
     func generateUUID(emails: [String]) -> String{
@@ -147,10 +191,7 @@ class ChatViewController: UIViewController {
         
     }
     
-    
-    
     func sendMessage(message: Message) -> Bool{
-        
         print("sending \(message.text)")
         
         do {
